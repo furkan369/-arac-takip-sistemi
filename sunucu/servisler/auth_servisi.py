@@ -3,7 +3,7 @@ Authentication Servisleri
 Şifre hashing, JWT token oluşturma ve kullanıcı doğrulama
 """
 import bcrypt
-from jose import JWTError, jwt
+import jwt
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
 from sunucu.modeller.kullanici import Kullanicilar
@@ -46,7 +46,7 @@ def token_dogrula(token: str) -> dict:
     try:
         payload = jwt.decode(token, ayarlar.SECRET_KEY, algorithms=[ayarlar.ALGORITHM])
         return payload
-    except JWTError:
+    except Exception:
         return None
 
 
