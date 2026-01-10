@@ -1,0 +1,138 @@
+.aracKarti {
+    background: var(--renk-kart);
+    border-radius: var(--radius-xl);
+    padding: 0;
+    overflow: hidden;
+    box-shadow: var(--golge-1);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--renk-outline-variant);
+    position: relative;
+    cursor: pointer;
+}
+
+.aracKarti:hover {
+    box-shadow: var(--golge-3);
+    transform: translateY(-8px);
+    border-color: var(--renk-birincil-acik);
+}
+
+.header {
+    background: linear-gradient(135deg, var(--renk-yuzey) 0%, var(--renk-yuzey-variant) 100%);
+    padding: 20px;
+    border-bottom: 1px solid var(--renk-outline-variant);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aracBilgi {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ikonKutusu {
+    width: 48px;
+    height: 48px;
+    background: var(--renk-yuzey);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--renk-birincil);
+    box-shadow: var(--golge-1);
+}
+
+.markaModel {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--renk-metin-birincil);
+    margin: 0;
+}
+
+.plaka {
+    font-size: 13px;
+    color: var(--renk-metin-ikincil);
+    font-weight: 500;
+}
+
+.rozet {
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.aktif {
+    background: var(--renk-basari-acik);
+    color: var(--renk-basari);
+}
+
+.pasif {
+    background: var(--renk-hata-acik);
+    color: var(--renk-hata);
+}
+
+.ozet {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.ozetItem {
+    text-align: center;
+    padding: 12px;
+    background: var(--renk-yuzey);
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    transition: border-color var(--transition-fast);
+}
+
+.aracKarti:hover .ozetItem {
+    border-color: var(--renk-outline-variant);
+}
+
+.ozetBaslik {
+    font-size: 12px;
+    color: var(--renk-metin-ikincil);
+    margin-bottom: 4px;
+}
+
+.ozetDeger {
+    font-weight: 600;
+    color: var(--renk-metin-birincil);
+    font-size: 14px;
+}
+
+.actions {
+    padding: 20px;
+    border-top: 1px solid var(--renk-outline-variant);
+    display: flex;
+    justify-content: flex-end;
+    background: transparent;
+}
+
+.detayButon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--renk-birincil);
+    background: var(--renk-birincil-acik);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.detayButon:hover {
+    background: var(--renk-birincil);
+    color: white;
+    gap: 12px;
+    box-shadow: var(--golge-2);
+    transform: translateY(-1px);
+}

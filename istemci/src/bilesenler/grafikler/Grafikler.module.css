@@ -1,0 +1,80 @@
+/* Grafik Bileşenleri - Material 3 Stili */
+
+.grafikKapsayici {
+    width: 100%;
+    padding: 16px;
+    background: var(--renk-yuzey);
+    border-radius: var(--radius-large);
+    box-shadow: var(--golge-1);
+}
+
+.bosVeri {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: var(--renk-metin-ikincil);
+    font-size: 16px;
+    text-align: center;
+}
+
+.bosVeri p {
+    margin: 0;
+    padding: 20px;
+    background: var(--renk-yuzey-variant);
+    border-radius: var(--radius-medium);
+}
+
+/* Kadran Grafik Özel Stilleri */
+.kadranKapsayici {
+    position: relative;
+    width: 100%;
+}
+
+.kadranMerkez {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.kadranDeger {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.kadranEtiket {
+    font-size: 12px;
+    color: var(--renk-metin-ikincil);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.kadranDetay {
+    margin-top: 220px;
+    padding-top: 16px;
+    border-top: 1px solid var(--renk-kenar);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detayItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+.detayItem span {
+    color: var(--renk-metin-ikincil);
+}
+
+.detayItem strong {
+    color: var(--renk-metin-birincil);
+    font-weight: 600;
+}

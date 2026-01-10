@@ -1,0 +1,93 @@
+/* Layout Styles - Material 3 */
+
+.layout {
+    min-height: 100vh;
+    background: var(--renk-yuzey);
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    height: 100vh;
+    background: white;
+    border-right: 1px solid var(--renk-outline-variant);
+    transition: width var(--transition-normal);
+    z-index: 30;
+}
+
+.sidebar.acik {
+    width: 256px;
+}
+
+.sidebar.kapali {
+    width: 80px;
+}
+
+.sidebarMobil {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    visibility: hidden;
+    transition: visibility var(--transition-normal);
+}
+
+.sidebarMobil.acik {
+    visibility: visible;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.sidebarMobil.acik .overlay {
+    opacity: 1;
+}
+
+.sidebarContent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 256px;
+    background: white;
+    box-shadow: var(--golge-4);
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+}
+
+.sidebarMobil.acik .sidebarContent {
+    transform: translateX(0);
+}
+
+/* Main Content */
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left var(--transition-normal);
+}
+
+.mainContent.sidebarAcik {
+    margin-left: 256px;
+}
+
+.mainContent.sidebarKapali {
+    margin-left: 80px;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+    .sidebar {
+        display: none;
+    }
+
+    .mainContent.sidebarAcik,
+    .mainContent.sidebarKapali {
+        margin-left: 0;
+    }
+}

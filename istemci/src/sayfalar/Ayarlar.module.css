@@ -1,0 +1,191 @@
+/* Ayarlar Sayfası Stilleri */
+
+.container {
+    padding: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--renk-metin-birincil);
+    margin: 0;
+}
+
+.header p {
+    font-size: 14px;
+    color: var(--renk-metin-ikincil);
+    margin: 4px 0 0 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Profil Kartı (Sol Taraf) */
+.profileCard {
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--renk-outline-variant);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--golge-1);
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    background: var(--renk-yuzey-variant);
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--renk-birincil);
+}
+
+.profileName {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--renk-metin-birincil);
+    margin: 0 0 4px;
+}
+
+.profileEmail {
+    font-size: 14px;
+    color: var(--renk-metin-ikincil);
+    margin: 0 0 16px;
+}
+
+.roleBadge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #E0D5FF;
+    color: var(--renk-birincil);
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Form Kartı (Sağ Taraf) */
+.settingsCard {
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--renk-outline-variant);
+    overflow: hidden;
+    box-shadow: var(--golge-1);
+}
+
+.section {
+    padding: 32px;
+    border-bottom: 1px solid var(--renk-outline-variant);
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--renk-metin-birincil);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--renk-metin-birincil);
+}
+
+.formGroup input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--renk-outline);
+    border-radius: var(--radius-lg);
+    font-size: 14px;
+    transition: all var(--transition-fast);
+    background: var(--renk-yuzey);
+}
+
+.formGroup input:focus {
+    outline: none;
+    border-color: var(--renk-birincil);
+    box-shadow: 0 0 0 3px var(--renk-birincil-acik);
+    background: white;
+}
+
+.formGroup input:disabled {
+    background: var(--renk-yuzey-variant);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.button {
+    padding: 12px 24px;
+    background: var(--renk-birincil);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button:hover {
+    background: var(--renk-birincil-koyu);
+    transform: translateY(-1px);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.errorMessage {
+    padding: 12px;
+    background: #FEE2E2;
+    color: var(--renk-hata);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.successMessage {
+    padding: 12px;
+    background: #DCFCE7;
+    color: var(--renk-basari);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

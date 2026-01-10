@@ -1,0 +1,279 @@
+/* Kullanıcılar Sayfası Stilleri - Material 3 */
+
+.container {
+    padding: 0;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.title h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--renk-metin-birincil);
+    margin: 0;
+}
+
+.title p {
+    font-size: 14px;
+    color: var(--renk-metin-ikincil);
+    margin: 4px 0 0 0;
+}
+
+.addButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--renk-birincil);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--golge-2);
+}
+
+.addButton:hover {
+    background: var(--renk-birincil-koyu);
+    transform: translateY(-1px);
+    box-shadow: var(--golge-3);
+}
+
+/* Tablo Kartı */
+.card {
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--renk-outline-variant);
+    overflow: hidden;
+    box-shadow: var(--golge-1);
+}
+
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.table th {
+    text-align: left;
+    padding: 16px 24px;
+    background: var(--renk-yuzey-variant);
+    color: var(--renk-metin-ikincil);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--renk-outline-variant);
+    color: var(--renk-metin-birincil);
+    font-size: 14px;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover {
+    background: var(--renk-yuzey-variant);
+}
+
+/* Badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge.admin {
+    background: #E0D5FF;
+    color: var(--renk-birincil);
+}
+
+.badge.kullanici {
+    background: #E2E8F0;
+    color: #475569;
+}
+
+/* Actions */
+.deleteButton {
+    padding: 8px;
+    border: none;
+    background: transparent;
+    color: var(--renk-hata);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.deleteButton:hover {
+    background: #FEE2E2;
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    background: white;
+    width: 100%;
+    max-width: 480px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--golge-4);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modalHeader {
+    padding: 24px;
+    border-bottom: 1px solid var(--renk-outline-variant);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalHeader h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--renk-metin-birincil);
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    color: var(--renk-metin-ikincil);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--radius-full);
+    transition: background var(--transition-fast);
+}
+
+.closeButton:hover {
+    background: var(--renk-yuzey-variant);
+}
+
+.modalBody {
+    padding: 24px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--renk-metin-birincil);
+}
+
+.formGroup input,
+.formGroup select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--renk-outline);
+    border-radius: var(--radius-lg);
+    font-size: 14px;
+    transition: border-color var(--transition-fast);
+    background: var(--renk-yuzey);
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    outline: none;
+    border-color: var(--renk-birincil);
+    box-shadow: 0 0 0 2px var(--renk-birincil-acik);
+}
+
+.modalFooter {
+    padding: 24px;
+    border-top: 1px solid var(--renk-outline-variant);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.cancelButton {
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid var(--renk-outline);
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    color: var(--renk-metin-birincil);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.cancelButton:hover {
+    background: var(--renk-yuzey-variant);
+}
+
+.submitButton {
+    padding: 10px 24px;
+    background: var(--renk-birincil);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.submitButton:hover {
+    background: var(--renk-birincil-koyu);
+}
+
+.submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.errorMessage {
+    padding: 12px;
+    background: #FEE2E2;
+    color: var(--renk-hata);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

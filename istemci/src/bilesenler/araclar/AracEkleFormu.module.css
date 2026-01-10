@@ -1,0 +1,215 @@
+/* Araç Ekleme Formu - Material 3 Outlined Text Fields */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal {
+    background: white;
+    border-radius: var(--radius-2xl);
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--golge-5);
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--renk-outline-variant);
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--renk-metin-birincil);
+}
+
+.closeButton {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--renk-metin-ikincil);
+}
+
+.closeButton:hover {
+    background: var(--renk-yuzey-variant);
+    color: var(--renk-metin-birincil);
+    transform: rotate(90deg);
+}
+
+/* Form */
+.form {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 640px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Material 3 Outlined Text Field */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+.field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--renk-metin-birincil);
+    margin-left: 4px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--renk-outline-variant);
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-family: inherit;
+    color: var(--renk-metin-birincil);
+    background: white;
+    transition: all var(--transition-fast);
+    outline: none;
+}
+
+.field input:hover,
+.field textarea:hover {
+    border-color: var(--renk-outline);
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: var(--renk-birincil);
+    box-shadow: 0 0 0 4px var(--renk-birincil-acik);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--renk-metin-ikincil);
+    opacity: 0.6;
+}
+
+/* Error State */
+.field input.error,
+.field textarea.error {
+    border-color: var(--renk-hata);
+}
+
+.field input.error:focus,
+.field textarea.error:focus {
+    box-shadow: 0 0 0 4px var(--renk-hata-acik);
+}
+
+.errorMessage {
+    font-size: 12px;
+    color: var(--renk-hata);
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    animation: slideIn 0.2s ease-in-out;
+}
+
+/* API Error */
+.apiError {
+    padding: 12px 16px;
+    background: var(--renk-hata-acik);
+    border: 1px solid var(--renk-hata);
+    border-radius: var(--radius-md);
+    color: var(--renk-hata-koyu);
+    font-size: 14px;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--renk-outline-variant);
+    margin-top: 8px;
+}
+
+.actions button {
+    min-width: 120px;
+}
+
+.actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,32 @@
+/* Yükleyici Styles - Material 3 */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--renk-birincil-acik);
+    border-top-color: var(--renk-birincil);
+    border-radius: var(--radius-full);
+    animation: yuklenme 0.8s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes yuklenme {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.metin {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--renk-metin-ikincil);
+    margin: 0;
+}

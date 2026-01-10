@@ -1,0 +1,135 @@
+/* Header Styles - Material 3 */
+
+.header {
+    background: white;
+    border-bottom: 1px solid var(--renk-outline-variant);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+}
+
+.headerContent {
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menuButton {
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    display: none;
+}
+
+.menuButton:hover {
+    background: var(--renk-yuzey-variant);
+}
+
+@media (max-width: 1023px) {
+    .menuButton {
+        display: block;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.iconButton {
+    position: relative;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.iconButton:hover {
+    background: var(--renk-yuzey-variant);
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background: var(--renk-hata);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 0 2px white;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.profileButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.profileButton:hover {
+    background: var(--renk-yuzey-variant);
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--renk-birincil) 0%, var(--renk-birincil-koyu) 100%);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: var(--golge-2);
+}
+
+.profileInfo {
+    text-align: left;
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .profileInfo {
+        display: block;
+    }
+}
+
+.profileInfo p:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--renk-metin-birincil);
+    margin: 0;
+}
+
+.profileInfo p:last-child {
+    font-size: 12px;
+    color: var(--renk-metin-ikincil);
+    margin: 0;
+}
