@@ -21,9 +21,17 @@ class Ayarlar(BaseSettings):
     GUNLUK_SEVIYESI: str = "INFO"
     
     # Güvenlik Ayarları (JWT Authentication)
-    SECRET_KEY: str = "DEGISTIR_BUNU_PRODUCTION_DA_OPENSSL_RAND_HEX_32"
+    SECRET_KEY: str = None  # ZORUNLU: .env dosyasından okunmalı
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if not self.SECRET_KEY:
+            import os
+            self.SECRET_KEY = os.getenv("SECRET_KEY")
+            if not self.SECRET_KEY:
+                raise ValueError("SECRET_KEY environment variable zorunludur! Lütfen .env dosyasında tanımlayın.")
     
     class Config:
         env_file = ".env"
