@@ -4,7 +4,7 @@ build/
 .vite/
 .env
 .env.local
-.env.production
+
 
 __pycache__/
 *.py[cod]

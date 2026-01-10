@@ -16,45 +16,18 @@ uygulama = FastAPI(
     debug=ayarlar.HATA_AYIKLAMA_MODU
 )
 
-@uygulama.middleware("http")
-async def log_requests(request: Request, call_next):
-    print(f"\n📥 GELEN İSTEK: {request.method} {request.url}")
-    print(f"👉 Origin: {request.headers.get('origin')}")
-    
-    # OPTIONS (preflight) isteklerine direkt yanıt ver
-    if request.method == "OPTIONS":
-        from fastapi.responses import Response
-        response = Response()
-        response.headers["Access-Control-Allow-Origin"] = "*"
-        response.headers["Access-Control-Allow-Methods"] = "*"
-        response.headers["Access-Control-Allow-Headers"] = "*"
-        response.headers["Access-Control-Max-Age"] = "3600"
-        print(f"📤 OPTIONS YANITI VERİLDİ\n")
-        return response
-    
-    try:
-        response = await call_next(request)
-        # Her response'a CORS header ekle
-        response.headers["Access-Control-Allow-Origin"] = "*"
-        response.headers["Access-Control-Allow-Methods"] = "*"
-        response.headers["Access-Control-Allow-Headers"] = "*"
-        print(f"📤 YANIT KODU: {response.status_code}\n")
-        return response
-    except Exception as e:
-        print(f"❌ HATA: {type(e).__name__}: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        raise
+# CORS Ayarları
+uygulama.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Tüm originlere izin ver (Production için spesifik domain verilebilir)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# CORS Middleware KALDIRILDI - Manuel header kullanıyoruz
-# uygulama.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],
-#     allow_credentials=False,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-#     expose_headers=["*"],
-# )
+# @uygulama.middleware("http")  <-- Manuel middleware devre dışı bırakıldı
+# async def log_requests(request: Request, call_next):
+#     ... (kodun geri kalanı)
 
 
 @uygulama.on_event("startup")
