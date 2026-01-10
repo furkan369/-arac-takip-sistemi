@@ -4,7 +4,7 @@ JWT token doğrulama ve kullanıcı bilgisi çıkarma
 """
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
+
 from sqlalchemy.orm import Session
 from sunucu.veritabani import veritabani_baglantisi_al
 from sunucu.modeller.kullanici import Kullanicilar
