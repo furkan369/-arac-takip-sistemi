@@ -77,7 +77,8 @@ async def saglik_kontrol(db: Session = Depends(veritabani_baglantisi_al)):
     """
     try:
         # Veritabani baglantisini test et
-        db.execute("SELECT 1")
+        from sqlalchemy import text
+        db.execute(text("SELECT 1"))
         veritabani_durumu = "Bagli"
     except Exception as e:
         veritabani_durumu = f"Baglanti hatasi: {str(e)}"
