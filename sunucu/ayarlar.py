@@ -11,7 +11,7 @@ class Ayarlar(BaseSettings):
     
     # Veritabani Ayarlari
     VERITABANI_SUNUCU: str = "localhost"
-    VERITABANI_PORT: int = 3306
+    VERITABANI_PORT: int = 5432
     VERITABANI_ADI: str = "arac_takip"
     VERITABANI_KULLANICI: str = "root"
     VERITABANI_SIFRE: str = ""

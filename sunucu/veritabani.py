@@ -10,10 +10,9 @@ from sunucu.ayarlar import ayarlar
 
 # Veritabani baglanti URL'i olustur
 VERITABANI_URL = (
-    f"mysql+mysqlconnector://{ayarlar.VERITABANI_KULLANICI}:"
+    f"postgresql+psycopg2://{ayarlar.VERITABANI_KULLANICI}:"
     f"{ayarlar.VERITABANI_SIFRE}@{ayarlar.VERITABANI_SUNUCU}:"
     f"{ayarlar.VERITABANI_PORT}/{ayarlar.VERITABANI_ADI}"
-    f"?charset=utf8mb4"
 )
 
 # SQLAlchemy engine olustur
