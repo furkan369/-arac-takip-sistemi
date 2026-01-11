@@ -16,10 +16,10 @@ uygulama = FastAPI(
     debug=ayarlar.HATA_AYIKLAMA_MODU
 )
 
-# CORS Ayarları
+# CORS Ayarları - Geçici Olarak Tüm Originlere Açık
 uygulama.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"https://.*\.onrender\.com|http://localhost:\d+|http://127\.0\.0\.1:\d+",
+    allow_origin_regex=r".*",  # Geçici: Tüm originlere izin (debugging için)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
