@@ -16,6 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Uygulama kodu
 COPY sunucu/ ./sunucu/
 COPY tablolari_olustur.py .
+COPY data_export.json .
 
 # Port
 EXPOSE 8000
