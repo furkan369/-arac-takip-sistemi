@@ -29,6 +29,22 @@ async def import_data(import_data_json: dict, db: Session = Depends(veritabani_b
         # JSON data request body'den geliyor
         data = import_data_json
         
+        # ÖNEMLİ: Önce tüm verileri temizle (duplicate key hatası önlemek için)
+        print("🧹 Veritabanı temizleniyor...")
+        try:
+            # Foreign key sırasına göre tersden sil
+            db.query(Hatirlaticilar).delete()
+            db.query(Yakit_Takibi).delete()
+            db.query(Harcamalar).delete()
+            db.query(Bakimlar).delete()
+            db.query(Araclar).delete()
+            db.query(Kullanicilar).delete()
+            db.commit()
+            print("✅ Veritabanı temizlendi")
+        except Exception as e:
+            print(f"⚠️ Temizleme uyarısı: {e}")
+            db.rollback()
+        
         stats = {
             "kullanicilar": 0,
             "araclar": 0,
