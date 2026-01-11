@@ -184,9 +184,20 @@ async def import_data(db: Session = Depends(veritabani_baglantisi_al)):
             "stats": stats
         }
         
+    except FileNotFoundError as e:
+        import traceback
+        error_detail = f"Dosya bulunamadı: {str(e)}\nTraceback: {traceback.format_exc()}"
+        print(f"❌ FileNotFoundError: {error_detail}")
+        raise HTTPException(
+            status_code=404,
+            detail=error_detail
+        )
     except Exception as e:
+        import traceback
+        error_detail = f"Import hatası: {type(e).__name__}: {str(e)}\nTraceback: {traceback.format_exc()}"
+        print(f"❌ Exception: {error_detail}")
         db.rollback()
         raise HTTPException(
             status_code=500,
-            detail=f"Import hatası: {str(e)}"
+            detail=error_detail
         )
