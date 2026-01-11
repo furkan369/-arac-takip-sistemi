@@ -19,12 +19,7 @@ uygulama = FastAPI(
 # CORS Ayarları
 uygulama.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "https://arac-takip-frontend.onrender.com",
-        "*"  # Fallback for other origins
-    ],
+    allow_origin_regex=r"https://.*\.onrender\.com|http://localhost:\d+|http://127\.0\.0\.1:\d+",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
