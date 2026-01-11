@@ -18,25 +18,16 @@ from pathlib import Path
 router = APIRouter()
 
 @router.post("/admin/import-data")
-async def import_data(db: Session = Depends(veritabani_baglantisi_al)):
+async def import_data(import_data_json: dict, db: Session = Depends(veritabani_baglantisi_al)):
     """
     ÖZEL: Tek kullanımlık data import endpoint
-    data_export.json dosyasını okur ve PostgreSQL'e yazar
+    JSON data'yı request body'den alır ve PostgreSQL'e yazar
     
     ⚠️ UYARI: Import sonrası bu endpoint'i kaldırın!
     """
     try:
-        # JSON dosyasını oku
-        json_path = Path(__file__).parent.parent / "data_export.json"
-        
-        if not json_path.exists():
-            raise HTTPException(
-                status_code=404,
-                detail="data_export.json bulunamadı"
-            )
-        
-        with open(json_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        # JSON data request body'den geliyor
+        data = import_data_json
         
         stats = {
             "kullanicilar": 0,
