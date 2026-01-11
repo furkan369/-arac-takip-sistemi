@@ -174,3 +174,11 @@ uygulama.include_router(
     kullanici_yonlendirici.router,
     prefix="/api/v1",
 )
+
+# TEMPORARY: Admin Import Router (Veri yüklemesi için)
+from sunucu.yonlendiriciler import admin_import
+uygulama.include_router(
+    admin_import.router,
+    prefix="/api/v1",
+    tags=["Admin - Temporary"]
+)
