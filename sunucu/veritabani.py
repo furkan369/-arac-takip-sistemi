@@ -8,12 +8,19 @@ from sqlalchemy.orm import sessionmaker
 from sunucu.ayarlar import ayarlar
 
 
-# Veritabani baglanti URL'i olustur
-VERITABANI_URL = (
-    f"postgresql+psycopg2://{ayarlar.VERITABANI_KULLANICI}:"
-    f"{ayarlar.VERITABANI_SIFRE}@{ayarlar.VERITABANI_SUNUCU}:"
-    f"{ayarlar.VERITABANI_PORT}/{ayarlar.VERITABANI_ADI}"
-)
+# Veritabani baglanti URL'i olustur (MySQL veya PostgreSQL)
+if ayarlar.VERITABANI_TIP.lower() == "postgresql":
+    VERITABANI_URL = (
+        f"postgresql+psycopg2://{ayarlar.VERITABANI_KULLANICI}:"
+        f"{ayarlar.VERITABANI_SIFRE}@{ayarlar.VERITABANI_SUNUCU}:"
+        f"{ayarlar.VERITABANI_PORT}/{ayarlar.VERITABANI_ADI}"
+    )
+else:  # MySQL
+    VERITABANI_URL = (
+        f"mysql+pymysql://{ayarlar.VERITABANI_KULLANICI}:"
+        f"{ayarlar.VERITABANI_SIFRE}@{ayarlar.VERITABANI_SUNUCU}:"
+        f"{ayarlar.VERITABANI_PORT}/{ayarlar.VERITABANI_ADI}"
+    )
 
 # SQLAlchemy engine olustur
 engine = create_engine(

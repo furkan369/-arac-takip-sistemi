@@ -10,6 +10,7 @@ class Ayarlar(BaseSettings):
     """Uygulama ayarlari sinifi"""
     
     # Veritabani Ayarlari
+    VERITABANI_TIP: str = "mysql"  # "mysql" veya "postgresql"
     VERITABANI_SUNUCU: str = "localhost"
     VERITABANI_PORT: int = 5432
     VERITABANI_ADI: str = "arac_takip"
