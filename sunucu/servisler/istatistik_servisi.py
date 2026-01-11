@@ -22,9 +22,10 @@ def aylik_harcama_trendi(db: Session, kullanici_id: int, arac_id: int = None, ay
     bugun = datetime.now()
     baslangic_tarihi = bugun - timedelta(days=ay_sayisi * 30)
     
-    # Sorgu
+    # PostgreSQL için TO_CHAR, MySQL için DATE_FORMAT
+    # SQLAlchemy'de cross-database için extract kullanıyoruz
     sorgu = db.query(
-        func.DATE_FORMAT(Harcamalar.tarih, '%Y-%m').label('ay'),
+        func.to_char(Harcamalar.tarih, 'YYYY-MM').label('ay'),  # PostgreSQL
         func.sum(Harcamalar.tutar).label('tutar')
     ).join(Araclar, Harcamalar.arac_id == Araclar.id)
     
@@ -80,9 +81,9 @@ def yakit_tuketim_analizi(db: Session, arac_id: int, ay_sayisi: int = 12) -> Lis
     baslangic_tarihi = bugun - timedelta(days=ay_sayisi * 30)
     
     sonuclar = db.query(
-        func.DATE_FORMAT(Yakit_Takibi.tarih, '%Y-%m').label('ay'),
+        func.to_char(Yakit_Takibi.tarih, 'YYYY-MM').label('ay'),  # PostgreSQL
         func.sum(Yakit_Takibi.litre).label('toplam_litre'),
-        func.sum(Yakit_Takibi.fiyat * Yakit_Takibi.litre).label('toplam_tutar'),
+        func.sum(Yakit_Takibi.tutar).label('toplam_tutar'),  # tutar field kullan
         func.count(Yakit_Takibi.id).label('adet')
     ).filter(
         and_(
