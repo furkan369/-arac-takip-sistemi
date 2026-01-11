@@ -3,7 +3,8 @@ FastAPI Uygulama Giris Noktasi
 Ana uygulama ve temel endpoint'leri icerir.
 """
 from fastapi import FastAPI, Depends, Request
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware
 from sqlalchemy.orm import Session
 from sunucu.veritabani import veritabani_baglantisi_al, engine, Base
 from sunucu.ayarlar import ayarlar
@@ -16,14 +17,42 @@ uygulama = FastAPI(
     debug=ayarlar.HATA_AYIKLAMA_MODU
 )
 
-# CORS Ayarları - Geçici Olarak Tüm Originlere Açık
-uygulama.add_middleware(
-    CORSMiddleware,
-    allow_origin_regex=r".*",  # Geçici: Tüm originlere izin (debugging için)
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
+# ÖZEL CORS Middleware - OPTIONS İsteklerini Middleware Seviyesinde Yakala
+class ForceCorsMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        # 1. OPTIONS İsteği mi? Direkt 200 OK Dön (Router'a gitme!)
+        if request.method == "OPTIONS":
+            response = JSONResponse(content="OK")
+        else:
+            # 2. Değilse normal işleyişe devam et
+            try:
+                response = await call_next(request)
+            except Exception as e:
+                print(f"Hata yakalandi: {e}")
+                response = JSONResponse(
+                    content={"detail": "Sunucu Hatasi"}, 
+                    status_code=500
+                )
+        
+        # 3. Headers'ı ZORLA Ekle (Her durumda)
+        origin = request.headers.get("origin")
+        
+        # Eğer Origin varsa onu geri yansıt (Regex yerine dinamik çözüm)
+        if origin:
+            response.headers["Access-Control-Allow-Origin"] = origin
+        else:
+            response.headers["Access-Control-Allow-Origin"] = "*"
+            
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+        response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, Origin, X-Requested-With"
+        
+        return response
+
+
+# Middleware'i ekle (En üstte!)
+uygulama.add_middleware(ForceCorsMiddleware)
 
 # @uygulama.middleware("http")  <-- Manuel middleware devre dışı bırakıldı
 # async def log_requests(request: Request, call_next):
